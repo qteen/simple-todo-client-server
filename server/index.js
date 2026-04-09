@@ -9,6 +9,31 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// Welcome endpoint
+app.get('/', (req, res) => {
+  res.send(`
+    <html>
+      <head>
+        <title>Server API</title>
+        <style>
+          body { font-family: system-ui, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f8fafc; color: #334155; }
+          .container { text-align: center; background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+          h1 { color: #0f172a; margin-bottom: 0.5rem; }
+          a { color: #3b82f6; text-decoration: none; font-weight: 500; }
+          a:hover { text-decoration: underline; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <h1>Welcome to the Todo API Server! 🚀</h1>
+          <p>The server is up and running.</p>
+          <p>Endpoints are available at <a href="/api/todos">/api/todos</a>.</p>
+        </div>
+      </body>
+    </html>
+  `);
+});
+
 // Get all todos
 app.get('/api/todos', async (req, res) => {
   try {
